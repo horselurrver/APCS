@@ -10,7 +10,10 @@ public class Pet {
 	protected int gender;
 	
 	public Pet(String name, String ownerName, String ownerEmail, String color){
-		
+		this.name = name;
+		this.ownerName = ownerName;
+		this.ownerEmail = ownerEmail;
+		this.color = color;
 	}
 	
 	/**
