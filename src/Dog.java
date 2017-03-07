@@ -22,6 +22,12 @@ public class Dog extends Pet{
 	 * Work on this method.
 	 */
 	public String toString(){
-		return "";
+		String result = "";
+		result += this.getPetName() + " owned by " + this.getOwnerName() + "\n";
+		result += "Owner's email: " + this.getEmail() + "\n";
+		result += "Pet color: " + this.getColor() + "\n";
+		result += "Gender: " + this.getGender() + "\n";
+		result += "Size: " + this.getSize() + "cm\n";
+		return result;
 	}
 }
