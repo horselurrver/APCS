@@ -81,15 +81,23 @@ public class Pet implements Boardable{
 		return result;
 	}
 	
-	//are we generating these randomly or taking these in from the input file?
+	/**
+	 * Sets the start boarding date for pet
+	 */
 	public void setBoardStart(int month, int day, int year){
 		startDate = new DateTime(year, month, day, 0, 0);
 	}
 	
+	/**
+	 * Sets end boarding date for pet
+	 */
 	public void setBoardEnd(int month, int day, int year){
 		endDate = new DateTime(year, month, day, 0, 0);
 	}
 	
+	/**
+	 * Checks if the given time is between the start and end date
+	 */
 	public boolean boarding(int month, int day, int year){
 		return false;//dummy variable until we finish this
 	}
