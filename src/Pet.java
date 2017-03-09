@@ -2,12 +2,15 @@
  * Blueprint for residential animals
  *
  */
-public class Pet {
+public class Pet implements Boardable{
 	private String name;
 	private String ownerName;
 	private String color;
 	private String ownerEmail;
 	protected int gender;
+	//variable to store start date
+	//variable to store end date
+	//source: https://www.tutorialspoint.com/java/java_date_time.htm
 	
 	public Pet(String name, String ownerName, String ownerEmail, String color){
 		this.name = name;
@@ -74,5 +77,17 @@ public class Pet {
 		result += "Pet color: " + this.getColor() + "\n";
 		result += "Gender: " + this.getGender() + "\n";
 		return result;
+	}
+	
+	public void setBoardStart(int month, int day, int year){
+		
+	}
+	
+	public void setBoardEnd(int month, int day, int year){
+		
+	}
+	
+	public boolean boarding(int month, int day, int year){
+		return false;//dummy variable until we finish this
 	}
 }

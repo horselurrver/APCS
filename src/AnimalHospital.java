@@ -37,10 +37,10 @@ public class AnimalHospital{
 					hospital.add(new Dog(name, ownerName, ownerEmail, color, size));//adding the dog
 				}
 			} else if (animal.equals("CAT")){
+				String hairLength = scan.next();
 				if (cat_count == CAT_LIMIT)
 					continue;
 				else {
-					String hairLength = scan.next();
 					cat_count++;
 					hospital.add(new Cat(name, ownerName, ownerEmail, color, hairLength));//or adding the cat
 				}
