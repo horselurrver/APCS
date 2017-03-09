@@ -5,8 +5,8 @@
  */
 public class Dog extends Pet{
 	private String size;
-	public Dog(String name, String ownerName, String ownerEmail, String color, String size){
-		super(name, ownerName, ownerEmail, color);
+	public Dog(String name, String ownerName, String ownerEmail, String color, String size, String gender){
+		super(name, ownerName, ownerEmail, color, gender);
 		this.size = size;
 	}
 	

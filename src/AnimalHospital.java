@@ -28,13 +28,14 @@ public class AnimalHospital{
 				throw new IllegalEmailException();
 			}
 			String color = scan.next();
+			String gender = scan.next();
 			if (animal.equals("DOG")){
 				String size = scan.next();
 				if (dog_count == DOG_LIMIT)//check if limit has been reached
 					continue;
 				else{
 					dog_count++;
-					hospital.add(new Dog(name, ownerName, ownerEmail, color, size));//adding the dog
+					hospital.add(new Dog(name, ownerName, ownerEmail, color, size, gender));//adding the dog
 				}
 			} else if (animal.equals("CAT")){
 				String hairLength = scan.next();
@@ -42,14 +43,14 @@ public class AnimalHospital{
 					continue;
 				else {
 					cat_count++;
-					hospital.add(new Cat(name, ownerName, ownerEmail, color, hairLength));//or adding the cat
+					hospital.add(new Cat(name, ownerName, ownerEmail, color, hairLength, gender));//or adding the cat
 				}
 			} else if (animal.equals("BIRD")){
 				if (bird_count == BIRD_LIMIT)
 					continue;
 				else {
 					bird_count++;
-					hospital.add(new Bird(name, ownerName, ownerEmail, color));//or adding the bird
+					hospital.add(new Bird(name, ownerName, ownerEmail, color, gender));//or adding the bird
 				}
 			}
 		}

@@ -1,3 +1,5 @@
+import org.joda.time.DateTime;
+
 /**
  * Blueprint for residential animals
  *
@@ -7,16 +9,16 @@ public class Pet implements Boardable{
 	private String ownerName;
 	private String color;
 	private String ownerEmail;
-	protected int gender;
-	//variable to store start date
-	//variable to store end date
-	//source: https://www.tutorialspoint.com/java/java_date_time.htm
+	protected String gender;
+	private DateTime startDate;
+	private DateTime endDate;
 	
-	public Pet(String name, String ownerName, String ownerEmail, String color){
+	public Pet(String name, String ownerName, String ownerEmail, String color, String gender){
 		this.name = name;
 		this.ownerName = ownerName;
 		this.ownerEmail = ownerEmail;
 		this.color = color;
+		this.gender = gender;
 	}
 	
 	/**
@@ -47,8 +49,8 @@ public class Pet implements Boardable{
 	 * Sets the gender of the pet
 	 * @param genderId
 	 */
-	public void setGender(int genderId){
-		gender = genderId;
+	public void setGender(String gender){
+		this.gender = gender;
 	}
 	
 	/**
@@ -56,7 +58,7 @@ public class Pet implements Boardable{
 	 * @return
 	 */
 	public String getGender(){
-		return "";
+		return gender;
 	}
 	
 	/**
@@ -81,11 +83,11 @@ public class Pet implements Boardable{
 	
 	//are we generating these randomly or taking these in from the input file?
 	public void setBoardStart(int month, int day, int year){
-		
+		startDate = new DateTime(year, month, day, 0, 0);
 	}
 	
 	public void setBoardEnd(int month, int day, int year){
-		
+		endDate = new DateTime(year, month, day, 0, 0);
 	}
 	
 	public boolean boarding(int month, int day, int year){
