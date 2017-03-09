@@ -5,19 +5,24 @@ rsmith@gmail.com
 black
 spayed
 large
+9 15 2001
+10 15 2001
 CAT
 Peanut
 John Wang
 jwang123@greatestgood.com
 tabby
 spayed
-2
+11 20 2003
+1 15 2004
 BIRD
 Paulie Ann
 Eric McDonald
 lolbeastotaku!!!@gmail.com
 yellow
 female
+3 25 2005
+3 30 2005
 DOG
 Akamaru
 Kiba Inuzuka
@@ -25,6 +30,8 @@ kinuzukathebeast@otakufan.org
 white
 male
 very large
+5 30 2010
+8 25 2010
 CAT
 Nyanko
 Natsume Takashi
@@ -32,5 +39,7 @@ natsumeyuujinchou@mangahere.com
 white
 neutered
 4
+7 8 2012
+8 7 2012
 END
 
