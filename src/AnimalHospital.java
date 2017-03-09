@@ -20,6 +20,7 @@ public class AnimalHospital{
 		hospital = new ArrayList<>();
 		scan = new Scanner(inputFile);
 		while (!(scan.next().equals("END"))){//beginning to scan in information until the end
+			System.out.println("hi");
 			String animal = scan.next();
 			String name = scan.next();
 			String ownerName = scan.next();
@@ -113,4 +114,11 @@ public class AnimalHospital{
 		
 	}
 
+	/**
+	 * Returns arraylist of pets in the animal hospital
+	 * @return
+	 */
+	public ArrayList<Pet> getHospital(){
+		return hospital;
+	}
 }
