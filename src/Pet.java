@@ -65,7 +65,7 @@ public class Pet {
 	}
 	
 	/**
-	 * Need to fix this method, not sure what information this is supposed to return
+	 * Returns information about pet
 	 */
 	public String toString(){
 		String result = "";

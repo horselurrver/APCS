@@ -19,7 +19,7 @@ public class Cat extends Pet{
 	}
 	
 	/**
-	 * Work on this method.
+	 * Returns information about cat
 	 */
 	public String toString(){
 		String result = super.toString();

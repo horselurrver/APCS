@@ -25,7 +25,7 @@ public class Bird extends Pet{
 	}
 	
 	/**
-	 * Work on this method.
+	 * Returns information about bird
 	 */
 	public String toString(){
 		String result = super.toString();
