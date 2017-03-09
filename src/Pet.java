@@ -79,6 +79,7 @@ public class Pet implements Boardable{
 		return result;
 	}
 	
+	//are we generating these randomly or taking these in from the input file?
 	public void setBoardStart(int month, int day, int year){
 		
 	}
