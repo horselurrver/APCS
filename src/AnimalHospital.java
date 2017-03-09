@@ -2,7 +2,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import org.joda.time.DateTime;
 /**
  * Read in boarding pets from a file and execute different methods
@@ -160,5 +159,12 @@ public class AnimalHospital{
 	 */
 	public ArrayList<Pet> getHospital(){
 		return hospital;
+	}
+	
+	/**
+	 * Orders hospital based on starting board date, starting from most recent
+	 */
+	public void orderHospital(){
+		
 	}
 }
