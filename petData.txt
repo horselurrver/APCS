@@ -12,17 +12,18 @@ Peanut
 John Wang
 jwang123@greatestgood.com
 tabby
+spayed
 11 20 2003
 1 15 2004
-spayed
+3
 BIRD
 Paulie Ann
 Eric McDonald
-lolbeastotaku!!!@gmail.com
+lolbeastotaku2017@gmail.com
 yellow
+female
 3 25 2005
 3 30 2005
-female
 DOG
 Akamaru
 Kiba Inuzuka
@@ -37,9 +38,7 @@ Nyanko
 Natsume Takashi
 natsumeyuujinchou@mangahere.com
 white
+neutered
 7 8 2012
 8 7 2012
-neutered
 4
-END
-

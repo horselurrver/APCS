@@ -22,39 +22,76 @@ public class AnimalHospital{
 	public AnimalHospital(String inputFile) throws IllegalEmailException, FileNotFoundException {
 		hospital = new ArrayList<>();
 		scan = new Scanner(new File(inputFile));
-		while (!(scan.next().equals("END"))){//beginning to scan in information until the end
+		while (scan.hasNextLine()){//beginning to scan in information until the end
+			scan.useDelimiter("\n");
 			String animal = scan.next();
+			//System.out.println("Animal type: " + animal);
 			String name = scan.next();
-			System.out.println("Name: " + name);
+			//System.out.println("Animal name: " + name);
 			String ownerName = scan.next();
+			//System.out.println("Onwer name: " + ownerName);
 			String ownerEmail = scan.next();
+			//System.out.println("Owner email: " + ownerEmail);
+			
 			if (!(ownerEmail.matches(EMAIL_REGEX))){//validate user email
 				throw new IllegalEmailException();
 			}
 			String color = scan.next();
+			//System.out.println("Animal color: " + color);
 			String gender = scan.next();
+			//System.out.println("Gender: " + gender);
+			
+			scan.useDelimiter("\\W");
+			int startMonth = scan.nextInt();
+			//System.out.println("Start month: " + startMonth);
+			int startDay = scan.nextInt();
+			//System.out.println("Start day: " + startDay);
+			int startYear = scan.nextInt();
+			//System.out.println("Start year: " + startYear);
+			
+			int endMonth = scan.nextInt();
+			//System.out.println("End month: " + startMonth);
+			int endDay = scan.nextInt();
+			//System.out.println("End month: " + startMonth);
+			int endYear = scan.nextInt();
+			//System.out.println("End month: " + startMonth);
+			
+			//validate dates, possibly throw illegaldateexception here
+			
 			if (animal.equals("DOG")){
+				scan.useDelimiter("\n");
 				String size = scan.next();
+				//System.out.println("Size: " + size);
 				if (dog_count == DOG_LIMIT)//check if limit has been reached
 					continue;
 				else{
 					dog_count++;
-					hospital.add(new Dog(name, ownerName, ownerEmail, color, size, gender));//adding the dog
+					Dog d = new Dog(name, ownerName, ownerEmail, color, size, gender);
+					d.setBoardStart(startMonth, startDay, startYear);
+					d.setBoardEnd(endMonth, endDay, endYear);
+					hospital.add(d);//adding the dog
 				}
 			} else if (animal.equals("CAT")){
 				String hairLength = scan.next();
+				//System.out.println("Hair length: " + hairLength);
 				if (cat_count == CAT_LIMIT)
 					continue;
-				else {
+				else{
 					cat_count++;
-					hospital.add(new Cat(name, ownerName, ownerEmail, color, hairLength, gender));//or adding the cat
+					Cat c = new Cat(name, ownerName, ownerEmail, color, hairLength, gender);
+					c.setBoardStart(startMonth, startDay, startYear);
+					c.setBoardEnd(endMonth, endDay, endYear);
+					hospital.add(c);
 				}
 			} else if (animal.equals("BIRD")){
 				if (bird_count == BIRD_LIMIT)
 					continue;
 				else {
 					bird_count++;
-					hospital.add(new Bird(name, ownerName, ownerEmail, color, gender));//or adding the bird
+					Bird b = new Bird(name, ownerName, ownerEmail, color, gender);
+					b.setBoardStart(startMonth, startDay, startYear);
+					b.setBoardEnd(endMonth, endDay, endYear);
+					hospital.add(b);
 				}
 			}
 		}
@@ -118,7 +155,7 @@ public class AnimalHospital{
 	}
 
 	/**
-	 * Returns arraylist of pets in the animal hospital
+	 * Returns Arraylist of pets in the animal hospital
 	 * @return
 	 */
 	public ArrayList<Pet> getHospital(){

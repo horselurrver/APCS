@@ -23,7 +23,7 @@ public class Dog extends Pet{
 	 */
 	public String toString(){
 		String result = super.toString();
-		result += "Size: " + this.getSize() + "cm\n";
+		result += "Size: " + this.getSize() + "\n";
 		return result;
 	}
 }

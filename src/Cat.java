@@ -23,7 +23,7 @@ public class Cat extends Pet{
 	 */
 	public String toString(){
 		String result = super.toString();
-		result += "Hair length: " + this.getHairLength() + "cm\n";
+		result += "Hair length: " + this.getHairLength() + " cm\n";
 		return result;
 	}
 }
