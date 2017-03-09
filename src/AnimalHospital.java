@@ -56,7 +56,7 @@ public class AnimalHospital{
 			int endYear = scan.nextInt();
 			//System.out.println("End month: " + startMonth);
 			
-			//validate dates, possibly throw illegaldateexception here
+			//validate dates, possibly throw illegaldateexception here. make sure start is before end.
 			
 			if (animal.equals("DOG")){
 				scan.useDelimiter("\n");
