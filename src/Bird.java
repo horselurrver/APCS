@@ -28,11 +28,7 @@ public class Bird extends Pet{
 	 * Work on this method.
 	 */
 	public String toString(){
-		String result = "";
-		result += this.getPetName() + " owned by " + this.getOwnerName() + "\n";
-		result += "Owner's email: " + this.getEmail() + "\n";
-		result += "Pet color: " + this.getColor() + "\n";
-		result += "Gender: " + this.getGender() + "\n";
+		String result = super.toString();
 		result += "Feathers clipped: " + this.clipped() + "cm\n";
 		return result;
 	}
