@@ -1,5 +1,5 @@
 /**
- * Cog subclass of Pet
+ * Cat subclass of Pet
  * @author amywang
  *
  */
