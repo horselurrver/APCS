@@ -1,5 +1,8 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
+
 import org.joda.time.DateTime;
 /**
  * Read in boarding pets from a file and execute different methods
@@ -16,13 +19,13 @@ public class AnimalHospital{
 	int cat_count = 0;//keep track of number of pets in hospital
 	int dog_count = 0;
 	int bird_count = 0;
-	public AnimalHospital(String inputFile) throws IllegalEmailException {
+	public AnimalHospital(String inputFile) throws IllegalEmailException, FileNotFoundException {
 		hospital = new ArrayList<>();
-		scan = new Scanner(inputFile);
+		scan = new Scanner(new File(inputFile));
 		while (!(scan.next().equals("END"))){//beginning to scan in information until the end
-			System.out.println("hi");
 			String animal = scan.next();
 			String name = scan.next();
+			System.out.println("Name: " + name);
 			String ownerName = scan.next();
 			String ownerEmail = scan.next();
 			if (!(ownerEmail.matches(EMAIL_REGEX))){//validate user email

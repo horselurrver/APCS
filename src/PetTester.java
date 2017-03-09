@@ -1,8 +1,9 @@
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * Driver class
- * @author amywang
  *
  */
 public class PetTester {
@@ -34,6 +35,8 @@ public class PetTester {
 			}
 		} catch (IllegalEmailException i){
 			System.out.println(i.getMessage());
+		} catch (FileNotFoundException f){
+			System.out.println(f.getMessage());
 		}
 	}
 	
