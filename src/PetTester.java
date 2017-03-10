@@ -32,13 +32,15 @@ public class PetTester {
 				System.out.println("******************************************");
 				
 			}
-			h.printPetInfoByName("skj");
-			h.printPetInfoByOwner("sdkj");
-			h.printPetsBoarding(1, 1, 2009);
+			//h.printPetInfoByName("skj");
+			//h.printPetInfoByOwner("sdkj");
+			//h.printPetsBoarding(9, 15, 2001);
 		} catch (IllegalEmailException i){
 			System.out.println(i.getMessage());
 		} catch (FileNotFoundException f){
 			System.out.println(f.getMessage());
+		} catch (IllegalDateException i){
+			System.out.println(i.getMessage());
 		}
 	}
 	

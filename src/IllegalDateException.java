@@ -5,7 +5,7 @@
  */
 public class IllegalDateException extends Exception {
 	public IllegalDateException(){
-		super("Month and day are not in valid range. Year is not between 2000 and 2016, "
-				+ "or start and end dates are not valid ranges.");
+		super("Month, day, or year not in valid range, "
+				+ "or start and end dates not valid ranges.");
 	}
 }

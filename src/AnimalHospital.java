@@ -19,7 +19,7 @@ public class AnimalHospital{
 	int cat_count = 0;//keep track of number of pets in hospital
 	int dog_count = 0;
 	int bird_count = 0;
-	public AnimalHospital(String inputFile) throws IllegalEmailException, FileNotFoundException {
+	public AnimalHospital(String inputFile) throws IllegalEmailException, IllegalDateException, FileNotFoundException {
 		hospital = new ArrayList<>();
 		scan = new Scanner(new File(inputFile));
 		while (scan.hasNextLine()){//beginning to scan in information until the end
@@ -55,8 +55,16 @@ public class AnimalHospital{
 			//System.out.println("End month: " + startMonth);
 			int endYear = scan.nextInt();
 			//System.out.println("End month: " + startMonth);
+			if (!(startMonth >=1 && startMonth <= 12) | !(endMonth >=1 && endMonth <= 12) | 
+					!(startYear >= 2000 && startYear <= 2016) | !(endYear >= 2000 && endYear <= 2016)
+					| !(endDay >= 0 && endDay <= 31) | !(startDay >= 0 && startDay <= 31))
+				throw new IllegalDateException();
 			
-			//validate dates, possibly throw illegaldateexception here. make sure start is before end.
+			DateTime start = new DateTime(startYear, startMonth, startDay, 0, 0);
+			DateTime end = new DateTime(endYear, endMonth, endDay, 0, 0);
+
+			if (!(start.compareTo(end) > 0))
+				throw new IllegalDateException();
 			
 			if (animal.equals("DOG")){
 				scan.useDelimiter("\n");
@@ -159,7 +167,7 @@ public class AnimalHospital{
 	public void printPetsBoarding(int month, int day, int year){
 		boolean found = false;
 		String year2 = ("" + year).substring(("" + year).length() -2);
-		System.out.printf("Pets boarding on %d/%d/%d\n", month, day, Integer.parseInt(year2));
+		System.out.printf("Pets boarding on %d/%d/%s\n", month, day, year2);
 		System.out.println("******************************************");
 		for (Pet a : hospital){
 			if (a.boarding(year, month, day)){
@@ -168,7 +176,7 @@ public class AnimalHospital{
 			}
 		}
 		if (!found)
-			System.out.printf("No pets boarding on %d/%d/%d were found\n", month, day, Integer.parseInt(year2));
+			System.out.printf("No pets boarding on %d/%d/%s were found\n", month, day, year2);
 		System.out.println("******************************************");
 	}
 
