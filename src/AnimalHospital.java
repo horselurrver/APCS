@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
+
 import org.joda.time.DateTime;
 /**
  * Read in boarding pets from a file and execute different methods
@@ -66,8 +67,8 @@ public class AnimalHospital{
 				else{
 					dog_count++;
 					Dog d = new Dog(name, ownerName, ownerEmail, color, size, gender);
-					d.setBoardStart(startMonth, startDay, startYear);
-					d.setBoardEnd(endMonth, endDay, endYear);
+					d.setBoardStart(startYear,startMonth, startDay);
+					d.setBoardEnd(endYear, endMonth, endDay);
 					hospital.add(d);//adding the dog
 				}
 			} else if (animal.equals("CAT")){
@@ -78,8 +79,8 @@ public class AnimalHospital{
 				else{
 					cat_count++;
 					Cat c = new Cat(name, ownerName, ownerEmail, color, hairLength, gender);
-					c.setBoardStart(startMonth, startDay, startYear);
-					c.setBoardEnd(endMonth, endDay, endYear);
+					c.setBoardStart(startYear,startMonth, startDay);
+					c.setBoardEnd(endYear, endMonth, endDay);
 					hospital.add(c);
 				}
 			} else if (animal.equals("BIRD")){
@@ -88,8 +89,8 @@ public class AnimalHospital{
 				else {
 					bird_count++;
 					Bird b = new Bird(name, ownerName, ownerEmail, color, gender);
-					b.setBoardStart(startMonth, startDay, startYear);
-					b.setBoardEnd(endMonth, endDay, endYear);
+					b.setBoardStart(startYear,startMonth, startDay);
+					b.setBoardEnd(endYear, endMonth, endDay);
 					hospital.add(b);
 				}
 			}
@@ -102,6 +103,8 @@ public class AnimalHospital{
 	 * @param name
 	 */
 	public void printPetInfoByName(String name){
+		System.out.println("Pets named " + name);
+		System.out.println("******************************************");
 		boolean found = false;
 		for (Pet p : hospital){
 			if (p.getPetName().equals(name)){
@@ -116,6 +119,7 @@ public class AnimalHospital{
 		}
 		if (!(found))
 			System.out.println("Pet with name " + name + " not found.");
+		System.out.println("******************************************");
 	}
 	
 	/**
@@ -125,6 +129,8 @@ public class AnimalHospital{
 	 * @param name
 	 */
 	public void printPetInfoByOwner(String name){
+		System.out.println("Pets owned by " + name);
+		System.out.println("******************************************");
 		boolean found = false;
 		for (Pet p : hospital){
 			if (p.getOwnerName().equals(name)){
@@ -139,6 +145,7 @@ public class AnimalHospital{
 		}
 		if (!(found))
 			System.out.println("Pet with owner " + name + " not found.");
+		System.out.println("******************************************");
 	}
 	
 	/**
@@ -150,7 +157,19 @@ public class AnimalHospital{
 	 * @param year
 	 */
 	public void printPetsBoarding(int month, int day, int year){
-		
+		boolean found = false;
+		String year2 = ("" + year).substring(("" + year).length() -2);
+		System.out.printf("Pets boarding on %d/%d/%d\n", month, day, Integer.parseInt(year2));
+		System.out.println("******************************************");
+		for (Pet a : hospital){
+			if (a.boarding(year, month, day)){
+				System.out.println(a.toString());
+				found = true;
+			}
+		}
+		if (!found)
+			System.out.printf("No pets boarding on %d/%d/%d were found\n", month, day, Integer.parseInt(year2));
+		System.out.println("******************************************");
 	}
 
 	/**
@@ -159,12 +178,5 @@ public class AnimalHospital{
 	 */
 	public ArrayList<Pet> getHospital(){
 		return hospital;
-	}
-	
-	/**
-	 * Orders hospital based on starting board date, starting from most recent
-	 */
-	public void orderHospital(){
-		
 	}
 }

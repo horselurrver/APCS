@@ -22,8 +22,8 @@ public class Cat extends Pet{
 	 * Returns information about cat
 	 */
 	public String toString(){
-		String result = super.toString();
-		result += "Hair length: " + this.getHairLength() + " cm\n";
+		String result = super.toString() + "\n";
+		result += "Hair length: " + this.getHairLength() + " cm";
 		return result;
 	}
 }

@@ -1,4 +1,5 @@
 import org.joda.time.DateTime;
+import org.joda.time.Interval;
 
 /**
  * Blueprint for residential animals
@@ -77,28 +78,44 @@ public class Pet implements Boardable{
 		result += this.getPetName() + " owned by " + this.getOwnerName() + "\n";
 		result += "Owner's email: " + this.getEmail() + "\n";
 		result += "Pet color: " + this.getColor() + "\n";
-		result += "Gender: " + this.getGender() + "\n";
+		result += "Gender: " + this.getGender();
 		return result;
 	}
 	
 	/**
 	 * Sets the start boarding date for pet
 	 */
-	public void setBoardStart(int month, int day, int year){
+	public void setBoardStart(int year, int month, int day){
 		startDate = new DateTime(year, month, day, 0, 0);
 	}
 	
 	/**
 	 * Sets end boarding date for pet
 	 */
-	public void setBoardEnd(int month, int day, int year){
+	public void setBoardEnd(int year, int month, int day){
 		endDate = new DateTime(year, month, day, 0, 0);
 	}
 	
 	/**
 	 * Checks if the given time is between the start and end date
 	 */
-	public boolean boarding(int month, int day, int year){
-		return false;//dummy variable until we finish this
+	public boolean boarding(int year, int month, int day){
+		Interval interval = new Interval(startDate, endDate);
+		DateTime test = new DateTime(year, month, day, 0, 0);
+		return interval.contains(test);
+	}
+	
+	/**
+	 * Get start date
+	 */
+	public DateTime getBoardStart(){
+		return startDate;
+	}
+	
+	/**
+	 * Get end date
+	 */
+	public DateTime getBoardEnd(){
+		return endDate;
 	}
 }

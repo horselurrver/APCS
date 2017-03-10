@@ -22,8 +22,8 @@ public class Dog extends Pet{
 	 * Returns information about dog
 	 */
 	public String toString(){
-		String result = super.toString();
-		result += "Size: " + this.getSize() + "\n";
+		String result = super.toString() + "\n";
+		result += "Size: " + this.getSize() + "";
 		return result;
 	}
 }

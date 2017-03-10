@@ -29,7 +29,7 @@ public class Bird extends Pet{
 	 */
 	public String toString(){
 		String result = super.toString();
-		result += "Feathers clipped: " + this.clipped() + "cm\n";
+		result += "Feathers clipped: " + this.clipped() + "cm";
 		return result;
 	}
 }

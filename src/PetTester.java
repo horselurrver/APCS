@@ -1,7 +1,6 @@
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
-
 /**
  * Driver class
  *
@@ -33,6 +32,9 @@ public class PetTester {
 				System.out.println("******************************************");
 				
 			}
+			h.printPetInfoByName("skj");
+			h.printPetInfoByOwner("sdkj");
+			h.printPetsBoarding(1, 1, 2009);
 		} catch (IllegalEmailException i){
 			System.out.println(i.getMessage());
 		} catch (FileNotFoundException f){
