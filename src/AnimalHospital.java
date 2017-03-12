@@ -4,21 +4,22 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import org.joda.time.DateTime;
+import org.joda.time.Days;
 /**
  * Read in boarding pets from a file and execute different methods
  *
  */
 public class AnimalHospital{
-	Scanner scan;
-	ArrayList<Pet> hospital;
-	String EMAIL_REGEX = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$"; //regex for email validation
+	private Scanner scan;
+	private ArrayList<Pet> hospital;
+	private String EMAIL_REGEX = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$"; //regex for email validation
 	//source for regex: https://ww-w.tutorialspoint.com/javaexamples/regular_email.htm
-	final int CAT_LIMIT = 5;//arbitrary limits in terms of housing for specific species
-	final int DOG_LIMIT = 5;
-	final int BIRD_LIMIT = 5;
-	int cat_count = 0;//keep track of number of pets in hospital
-	int dog_count = 0;
-	int bird_count = 0;
+	private final int CAT_LIMIT = 5;//arbitrary limits in terms of housing for specific species
+	private final int DOG_LIMIT = 5;
+	private final int BIRD_LIMIT = 5;
+	private int cat_count = 0;//keep track of number of pets in hospital
+	private int dog_count = 0;
+	private int bird_count = 0;
 	public AnimalHospital(String inputFile) throws IllegalEmailException, IllegalDateException, FileNotFoundException {
 		hospital = new ArrayList<>();
 		scan = new Scanner(new File(inputFile));
@@ -29,7 +30,7 @@ public class AnimalHospital{
 			String name = scan.next();
 			//System.out.println("Animal name: " + name);
 			String ownerName = scan.next();
-			//System.out.println("Onwer name: " + ownerName);
+			//System.out.println("Owner name: " + ownerName);
 			String ownerEmail = scan.next();
 			//System.out.println("Owner email: " + ownerEmail);
 			
@@ -62,8 +63,9 @@ public class AnimalHospital{
 			
 			DateTime start = new DateTime(startYear, startMonth, startDay, 0, 0);
 			DateTime end = new DateTime(endYear, endMonth, endDay, 0, 0);
-
-			if (!(start.compareTo(end) > 0))
+			int days = Days.daysBetween(start.toLocalDate(), end.toLocalDate()).getDays();
+			
+			if (!(start.compareTo(end) < 0))
 				throw new IllegalDateException();
 			
 			if (animal.equals("DOG")){
@@ -77,6 +79,7 @@ public class AnimalHospital{
 					Dog d = new Dog(name, ownerName, ownerEmail, color, size, gender);
 					d.setBoardStart(startYear,startMonth, startDay);
 					d.setBoardEnd(endYear, endMonth, endDay);
+					d.calcBoardingPrice(days);
 					hospital.add(d);//adding the dog
 				}
 			} else if (animal.equals("CAT")){
@@ -89,6 +92,7 @@ public class AnimalHospital{
 					Cat c = new Cat(name, ownerName, ownerEmail, color, hairLength, gender);
 					c.setBoardStart(startYear,startMonth, startDay);
 					c.setBoardEnd(endYear, endMonth, endDay);
+					c.calcBoardingPrice(days);
 					hospital.add(c);
 				}
 			} else if (animal.equals("BIRD")){
@@ -99,6 +103,7 @@ public class AnimalHospital{
 					Bird b = new Bird(name, ownerName, ownerEmail, color, gender);
 					b.setBoardStart(startYear,startMonth, startDay);
 					b.setBoardEnd(endYear, endMonth, endDay);
+					b.calcBoardingPrice(days);
 					hospital.add(b);
 				}
 			}

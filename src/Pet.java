@@ -1,4 +1,7 @@
+import java.text.DecimalFormat;
+
 import org.joda.time.DateTime;
+import org.joda.time.Days;
 import org.joda.time.Interval;
 
 /**
@@ -13,6 +16,9 @@ public class Pet implements Boardable{
 	protected String gender;
 	private DateTime startDate;
 	private DateTime endDate;
+	private double boardingPrice;
+	protected final double BOARDING_RATE = 38.60;//per night
+	DecimalFormat df = new DecimalFormat("#.00"); 
 	
 	public Pet(String name, String ownerName, String ownerEmail, String color, String gender){
 		this.name = name;
@@ -76,6 +82,8 @@ public class Pet implements Boardable{
 	public String toString(){
 		String result = "";
 		result += this.getPetName() + " owned by " + this.getOwnerName() + "\n";
+		result += "Length of stay: " + this.getDays() + " days\n";
+		result += "Total boarding price: $" + df.format(this.getBoardingPrice()) + "\n";
 		result += "Owner's email: " + this.getEmail() + "\n";
 		result += "Pet color: " + this.getColor() + "\n";
 		result += "Gender: " + this.getGender();
@@ -117,5 +125,26 @@ public class Pet implements Boardable{
 	 */
 	public DateTime getBoardEnd(){
 		return endDate;
+	}
+	
+	/**
+	 * Returns boarding price
+	 */
+	public double getBoardingPrice(){
+		return boardingPrice;
+	}
+	
+	/**
+	 * Sets boarding price using number of days
+	 */
+	public void calcBoardingPrice(int days){
+		boardingPrice = BOARDING_RATE*days;
+	}
+	
+	/**
+	 * Get number of days of stay
+	 */
+	public int getDays(){
+		return Days.daysBetween(startDate.toLocalDate(), endDate.toLocalDate()).getDays();
 	}
 }
