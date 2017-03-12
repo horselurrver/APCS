@@ -8,6 +8,14 @@ public class Dog extends Pet{
 	public Dog(String name, String ownerName, String ownerEmail, String color, String size, String gender){
 		super(name, ownerName, ownerEmail, color, gender);
 		this.size = size;
+		if (size.equals("small"))
+			setBoardingRate(30.60);
+		else if (size.equals("medium"))
+			setBoardingRate(34.60);
+		else if (size.equals("large"))
+			setBoardingRate(38.60);
+		else if (size.equals("very large"))
+			setBoardingRate(42.60);
 	}
 	
 	/**
@@ -26,4 +34,5 @@ public class Dog extends Pet{
 		result += "Size: " + this.getSize() + "";
 		return result;
 	}
+	
 }

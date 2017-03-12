@@ -17,7 +17,7 @@ public class Pet implements Boardable{
 	private DateTime startDate;
 	private DateTime endDate;
 	private double boardingPrice;
-	protected final double BOARDING_RATE = 38.60;//per night
+	protected double boarding_rate = 38.60;//per night
 	DecimalFormat df = new DecimalFormat("#.00"); 
 	
 	public Pet(String name, String ownerName, String ownerEmail, String color, String gender){
@@ -138,7 +138,14 @@ public class Pet implements Boardable{
 	 * Sets boarding price using number of days
 	 */
 	public void calcBoardingPrice(int days){
-		boardingPrice = BOARDING_RATE*days;
+		boardingPrice = boarding_rate*days;
+	}
+	
+	/**
+	 * Sets boarding rate 
+	 */
+	public void setBoardingRate(double newRate){
+		boarding_rate = newRate;
 	}
 	
 	/**
