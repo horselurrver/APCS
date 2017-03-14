@@ -115,24 +115,32 @@ public class AnimalHospital{
 	 * and prints information using toString() method
 	 * @param name
 	 */
-	public void printPetInfoByName(String name){
-		System.out.println("Pets named " + name);
-		System.out.println("******************************************");
+	public String printPetInfoByName(String name){
+		//System.out.println("Pets named " + name);
+		String temp = "Pets named " + name + "\n";
+		//System.out.println("******************************************");
+		temp = temp + "******************************************" + "\n";
 		boolean found = false;
 		for (Pet p : hospital){
 			if (p.getPetName().equals(name)){
 				found = true;
 				if (p.getClass() == Dog.class)
-					System.out.println(((Dog)p).toString());
+					//System.out.println(((Dog)p).toString());
+					temp = temp + ((Dog)p).toString() + "\n";
 				else if (p.getClass() == Bird.class)
-					System.out.println(((Bird)p).toString());
+					//System.out.println(((Bird)p).toString());
+					temp = temp + ((Bird)p).toString() + "\n";
 				else if (p.getClass() == Cat.class)
-					System.out.println(((Cat)p).toString());
+					//System.out.println(((Cat)p).toString());
+					temp = temp + ((Cat)p).toString() + "\n";
 			}
 		}
 		if (!(found))
-			System.out.println("Pet with name " + name + " not found.");
-		System.out.println("******************************************");
+			//System.out.println("Pet with name " + name + " not found.");
+			temp = temp + "Pet with name " + name + " not found. " + "\n"; 
+		//System.out.println("******************************************");
+		temp = temp + "******************************************";
+		return temp;
 	}
 	
 	/**
@@ -141,24 +149,32 @@ public class AnimalHospital{
 	 * method
 	 * @param name
 	 */
-	public void printPetInfoByOwner(String name){
-		System.out.println("Pets owned by " + name);
-		System.out.println("******************************************");
+	public String printPetInfoByOwner(String name){
+		//System.out.println("Pets owned by " + name);
+		String temp = "Pets owned by " + name + "\n";
+		//System.out.println("******************************************");
+		temp = temp + "******************************************" + "\n";
 		boolean found = false;
 		for (Pet p : hospital){
 			if (p.getOwnerName().equals(name)){
 				found = true;
 				if (p.getClass() == Dog.class)
-					System.out.println(((Dog)p).toString());
+					//System.out.println(((Dog)p).toString());
+					temp = temp + ((Dog)p).toString();
 				else if (p.getClass() == Bird.class)
-					System.out.println(((Bird)p).toString());
+					//System.out.println(((Bird)p).toString());
+					temp = temp + ((Bird)p).toString();
 				else if (p.getClass() == Cat.class)
-					System.out.println(((Cat)p).toString());
+					//System.out.println(((Cat)p).toString());
+					temp = temp + ((Cat)p).toString();
 			}
 		}
 		if (!(found))
-			System.out.println("Pet with owner " + name + " not found.");
-		System.out.println("******************************************");
+			//System.out.println("Pet with owner " + name + " not found.");
+			temp = temp + "Pet with owner " + name + " not found." + "\n";
+		//System.out.println("******************************************");
+		temp = temp + "******************************************";
+		return temp;
 	}
 	
 	/**
@@ -169,20 +185,27 @@ public class AnimalHospital{
 	 * @param day
 	 * @param year
 	 */
-	public void printPetsBoarding(int month, int day, int year){
+	public String printPetsBoarding(int month, int day, int year){
+		String temp = "";
 		boolean found = false;
 		String year2 = ("" + year).substring(("" + year).length() -2);
-		System.out.printf("Pets boarding on %d/%d/%s\n", month, day, year2);
-		System.out.println("******************************************");
+		//System.out.printf("Pets boarding on %d/%d/%s\n", month, day, year2);
+		temp = "Pets boarding on  " + " " + month + " " + day " " + year2 + "\n";
+		//System.out.println("******************************************");
+		temp = temp + "******************************************" + "\n";
 		for (Pet a : hospital){
 			if (a.boarding(year, month, day)){
-				System.out.println(a.toString());
+				//System.out.println(a.toString());
+				temp = temp + a.toString + "\n";
 				found = true;
 			}
 		}
 		if (!found)
-			System.out.printf("No pets boarding on %d/%d/%s were found\n", month, day, year2);
-		System.out.println("******************************************");
+			//System.out.printf("No pets boarding on %d/%d/%s were found\n", month, day, year2);
+			temp = temp + "No pets boarding on  " + " " + month + " " + day " " + year2 + "\n"
+		//System.out.println("******************************************");
+		temp = temp + "******************************************";
+		return temp;
 	}
 
 	/**
