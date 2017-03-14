@@ -94,6 +94,7 @@ public class GUI extends JFrame {
 		//hello
 		//basic search box that calls the different methods
 		JButton search = new JButton("Search by...");
+		search.addActionListener("this);
 		Font searchFont = new Font("Architects Daughter", Font.PLAIN, 17);
 		search.setFont(searchFont);
 		searchBox.add(search);
@@ -122,6 +123,35 @@ public class GUI extends JFrame {
 		p.add(textBox);
 		add(p);
 		setVisible(true);
+					 
+		//When search button is clicked, display different information on text area depending on what is selected on the dropdown menu
+		public void actionPerformed(ActionEvent evt) 
+		{
+			// TODO Auto-generated method stub
+			
+			if(evt.getSource() == btn1)
+			{
+				if(menu.getSelectedItem().toString().equals("Pet name"))
+				{
+					//still have to set up a JOptionPane so user can enter name of the pet
+					//textArea.setText(printPetInfoByName(""));
+				}
+				else if(menu.getSelectedItem().toString().equals("Owner name"))
+				{
+					
+				}
+				if(menu.getSelectedItem().toString().equals("Current residents"))
+				{
+					
+				}
+				if(menu.getSelectedItem().toString().equals("Available spots"))
+				{
+					
+				}
+				
+			}
+		}			 
+					 
 	}
 	 
 	public static void main(String[] args){
