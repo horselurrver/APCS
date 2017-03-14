@@ -83,6 +83,7 @@ public class GUI extends JFrame {
 		JLabel image = new JLabel(imageIcon);
 		coverImage.add(image, BorderLayout.CENTER);
 		
+		//hello
 		//basic search box that calls the different methods
 		JButton search = new JButton("Search by...");
 		Font searchFont = new Font("Architects Daughter", Font.PLAIN, 17);
