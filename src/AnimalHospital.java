@@ -186,6 +186,15 @@ public class AnimalHospital{
 	}
 
 	/**
+	 * Prints number of spaces available
+	 */
+	public void printAvailable(){
+		System.out.printf("%d spaces available for dogs\n", DOG_LIMIT - dog_count);
+		System.out.printf("%d spaces available for cats\n", CAT_LIMIT - cat_count);
+		System.out.printf("%d spaces available for birds\n", BIRD_LIMIT - bird_count);
+	}
+	
+	/**
 	 * Returns Arraylist of pets in the animal hospital
 	 * @return
 	 */

@@ -32,6 +32,9 @@ public class PetTester {
 				System.out.println("******************************************");
 				
 			}
+			System.out.println("******************************************");
+			h.printAvailable();
+			System.out.println("******************************************");
 			h.printPetInfoByName("Akamaru");
 			System.out.println("******************************************");
 			h.printPetInfoByOwner("Paulie Ann");
