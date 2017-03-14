@@ -85,11 +85,11 @@ public class GUI extends JFrame {
 		
 		//basic search box that calls the different methods
 		JButton search = new JButton("Search by...");
-		//Font buttonFont = new Font("Chewy", Font.PLAIN, 20);
 		Font searchFont = new Font("Architects Daughter", Font.PLAIN, 17);
 		search.setFont(searchFont);
 		searchBox.add(search);
 		
+		//dropdown menu that goes with the search box
 		JComboBox menu = new JComboBox(options);
 		menu.setFont(searchFont);
 		menu.setSelectedIndex(0);
