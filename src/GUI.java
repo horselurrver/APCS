@@ -4,11 +4,11 @@ import java.awt.Component;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.GraphicsEnvironment;
+import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -20,6 +20,7 @@ public class GUI extends JFrame {
 		setSize(800, 700);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JPanel p = new JPanel();
+		p.setLayout(new GridLayout(0, 1));
 		JPanel coverImage = new JPanel(new BorderLayout());
 		JPanel titlePane = new JPanel();
 		
@@ -55,7 +56,7 @@ public class GUI extends JFrame {
 		titlePane.setBackground(new Color(134, 213, 224));
 		titlePane.setLayout(new BoxLayout(titlePane, BoxLayout.X_AXIS));
 		titlePane.add(b);//add bone to left
-		titlePane.add(Box.createGlue()); //creates space between the JLabels
+		//creates space between the JLabels
 		titlePane.add(title);//add title to right
 	
 		//making cover image at top of page
@@ -64,7 +65,7 @@ public class GUI extends JFrame {
 		} catch (IOException i){
 			System.out.println(i.getMessage());
 		}
-		Image dimg = cover.getScaledInstance(700, 500,Image.SCALE_SMOOTH);
+		Image dimg = cover.getScaledInstance(800, 500,Image.SCALE_SMOOTH);
 		ImageIcon imageIcon = new ImageIcon(dimg);
 		JLabel image = new JLabel(imageIcon);
 		coverImage.add(image, BorderLayout.CENTER);
