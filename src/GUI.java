@@ -50,6 +50,7 @@ public class GUI extends JFrame {
 		}
 		Image scale = bone.getScaledInstance(100, 50, Image.SCALE_SMOOTH);
 		ImageIcon imag = new ImageIcon(scale);
+		JLabel b = new JLabel(imag);
 		
 		titlePane.setBackground(new Color(134, 213, 224));
 		titlePane.setLayout(new BoxLayout(titlePane, BoxLayout.X_AXIS));
