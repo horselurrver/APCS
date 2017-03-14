@@ -1,7 +1,7 @@
 AP CS Project
 Little program for boarding animals at an animal hospital.
 <br />
-Ideas for additional details:\n
+Ideas for additional details:
 <br />
 -paying day by pay for pet stay
 <br />
@@ -14,3 +14,6 @@ print information on one species at a time
   cost to board pet of that species
   how many spots are available for pets of that species
   also incorporate into GUI(pictures of the animal as button?)
+
+Sources:
+http://stackoverflow.com/questions/299495/how-to-add-an-image-to-a-jpanel<br />
