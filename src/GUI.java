@@ -29,6 +29,7 @@ public class GUI extends JFrame {
 		JPanel searchBox = new JPanel();
 		searchBox.setLayout(new BoxLayout(searchBox, BoxLayout.X_AXIS));
 		searchBox.setBackground(new Color(134, 213, 224));
+		JPanel textBox = new JPanel();
 		
 		//create custom font using google fonts
 		try {
@@ -96,6 +97,15 @@ public class GUI extends JFrame {
 		menu.setSelectedIndex(0);
 		searchBox.add(menu);
 		
+		//text area for printing out results
+		JTextArea textArea = new JTextArea(100, 100);
+		textArea.setEditable(false);
+		textArea.setLineWrap(true);
+		textArea.setWrapStyleWord(true);
+		JScrollPane scrollPane = new JScrollPane(textArea);
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		textBox.add(scrollPane);
+				
 		p.add(titlePane);
 		p.add(coverImage);
 		p.add(searchBox);
