@@ -6,23 +6,29 @@ import java.awt.FontFormatException;
 import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 public class GUI extends JFrame {
 	private BufferedImage cover, bone;
+	private String[] options = {"Pet name", "Owner name", "Current residents","Available spots"};
 	public GUI(){
 		setTitle("Animal Hospital");
-		setSize(800, 700);
+		setSize(800, 500);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JPanel p = new JPanel();
 		p.setLayout(new GridLayout(0, 1));
 		JPanel coverImage = new JPanel(new BorderLayout());
 		JPanel titlePane = new JPanel();
+		JPanel searchBox = new JPanel();
+		searchBox.setLayout(new BoxLayout(searchBox, BoxLayout.X_AXIS));
+		searchBox.setBackground(new Color(134, 213, 224));
 		
 		//create custom font using google fonts
 		try {
@@ -32,7 +38,14 @@ public class GUI extends JFrame {
 		} catch (IOException|FontFormatException e) {
 			 e.printStackTrace();
 		}
-		 
+		try {
+			GraphicsEnvironment ge = 
+			    GraphicsEnvironment.getLocalGraphicsEnvironment();
+			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("ArchitectsDaughter.ttf")));
+		} catch (IOException|FontFormatException e) {
+			 e.printStackTrace();
+		}
+		
 		//background color and margins
 		p.setBackground(new Color(134, 213, 224));//bluish theme for background
 		coverImage.setBackground(new Color(134, 213, 224));
@@ -65,15 +78,26 @@ public class GUI extends JFrame {
 		} catch (IOException i){
 			System.out.println(i.getMessage());
 		}
-		Image dimg = cover.getScaledInstance(800, 500,Image.SCALE_SMOOTH);
+		Image dimg = cover.getScaledInstance(800, 300, Image.SCALE_SMOOTH);
 		ImageIcon imageIcon = new ImageIcon(dimg);
 		JLabel image = new JLabel(imageIcon);
 		coverImage.add(image, BorderLayout.CENTER);
 		
-		//adding text that goes with the cover image
+		//basic search box that calls the different methods
+		JButton search = new JButton("Search by...");
+		//Font buttonFont = new Font("Chewy", Font.PLAIN, 20);
+		Font searchFont = new Font("Architects Daughter", Font.PLAIN, 17);
+		search.setFont(searchFont);
+		searchBox.add(search);
+		
+		JComboBox menu = new JComboBox(options);
+		menu.setFont(searchFont);
+		menu.setSelectedIndex(0);
+		searchBox.add(menu);
 		
 		p.add(titlePane);
 		p.add(coverImage);
+		p.add(searchBox);
 		add(p);
 		setVisible(true);
 	}
