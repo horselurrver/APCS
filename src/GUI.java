@@ -46,6 +46,13 @@ public class GUI extends JFrame {
 		} catch (IOException|FontFormatException e) {
 			 e.printStackTrace();
 		}
+		try {
+			GraphicsEnvironment ge = 
+			    GraphicsEnvironment.getLocalGraphicsEnvironment();
+			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("IndieFlower.ttf")));
+		} catch (IOException|FontFormatException e) {
+			 e.printStackTrace();
+		}
 		
 		//background color and margins
 		p.setBackground(new Color(134, 213, 224));//bluish theme for background
@@ -53,7 +60,7 @@ public class GUI extends JFrame {
 		p.setBorder(new EmptyBorder(30, 30, 30, 30));
 		
 		//making title text at top of cover page and read in bone picture that appears next to title
-		JLabel title = new JLabel("Animal Hospital", JLabel.LEFT);
+		JLabel title = new JLabel("The Clinique", JLabel.LEFT);
 		title.setFont(new Font("Chewy", Font.BOLD, 40));
 		title.setForeground(new Color(242, 233, 208));//brownish theme for font color
 		
@@ -98,17 +105,21 @@ public class GUI extends JFrame {
 		searchBox.add(menu);
 		
 		//text area for printing out results
-		JTextArea textArea = new JTextArea(100, 100);
+		JTextArea textArea = new JTextArea(100, 60);
+		textArea.setFont(new Font("Indie Flower", Font.PLAIN, 16));
+		textArea.setText("Welcome to the Clinique!");
 		textArea.setEditable(false);
 		textArea.setLineWrap(true);
 		textArea.setWrapStyleWord(true);
+		
 		JScrollPane scrollPane = new JScrollPane(textArea);
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		textBox.add(scrollPane);
-				
+			
 		p.add(titlePane);
 		p.add(coverImage);
 		p.add(searchBox);
+		p.add(textBox);
 		add(p);
 		setVisible(true);
 	}
