@@ -174,7 +174,7 @@ public class AnimalHospital{
 			}
 		}
 		if (!found)
-			temp = temp + "No pets boarding on  " + " " + month + " " + day + " " + year2 + "\n";
+			temp = temp + "No pets boarding on " + month + "/" + day + "/" + year2 + "\n";
 		temp = temp + "******************************************";
 		return temp;
 	}

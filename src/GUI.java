@@ -44,7 +44,7 @@ public class GUI extends JFrame implements ActionListener{
 			System.out.println(i.getMessage());
 		}
 		setTitle("The Clinique");
-		setSize(800, 500);
+		setSize(800, 650);
 		setLayout(new BorderLayout());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JPanel p = new JPanel();
@@ -141,13 +141,13 @@ public class GUI extends JFrame implements ActionListener{
 		
 		//text area for printing out results
 		textArea = new JTextArea(100, 60);
-		textArea.setFont(new Font("Indie Flower", Font.PLAIN, 16));
+		textArea.setFont(new Font("Indie Flower", Font.PLAIN, 18));
 		textArea.setText("Welcome to the Clinique!");
 		textArea.setEditable(false);
 		textArea.setLineWrap(true);
 		textArea.setWrapStyleWord(true);
 		JScrollPane scrollPane = new JScrollPane(textArea);
-		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 		textBox.add(scrollPane);
 		
 		p.add(titlePane);
@@ -168,13 +168,53 @@ public class GUI extends JFrame implements ActionListener{
 	 * @param evt
 	 */
 	public void actionPerformed(ActionEvent evt){
+	    Font f = new Font("Indie Flower", Font.PLAIN, 20);
 		if (menu.getSelectedItem().toString().equals("Pet name")){
-			 textArea.setText(h.printPetInfoByName("Akamaru"));//add dialog box
-			// System.out.println(h.printPetInfoByName("Akamaru"));
+			JLabel j = new JLabel("Input a pet name");
+			j.setFont(f);
+			String input = (String)JOptionPane.showInputDialog(
+                    null,
+                    j,
+                    "Pet Name",
+                    JOptionPane.PLAIN_MESSAGE,
+                    null,
+                    null,
+                    "Fluffy");
+			 textArea.setText(h.printPetInfoByName(input));
 		} else if (menu.getSelectedItem().toString().equals("Owner name")){
-			textArea.setText(h.printPetInfoByOwner("Rebekah Smith"));
+			JLabel j = new JLabel("Input an owner name");
+			j.setFont(f);
+			String input = (String)JOptionPane.showInputDialog(
+                    null,
+                    j,
+                    "Owner Name",
+                    JOptionPane.PLAIN_MESSAGE,
+                    null,
+                    null,
+                    "Sam");
+			textArea.setText(h.printPetInfoByOwner(input));
 		} else if (menu.getSelectedItem().toString().equals("Current residents")){
-			textArea.setText(h.printPetsBoarding(9, 15, 2001));
+			JLabel j = new JLabel("Input a date in the format of month/date/year");
+			j.setFont(f);
+			String input = "";
+			while (true) {
+				input = (String)JOptionPane.showInputDialog(
+	                    null,
+	                    j,
+	                    "Owner Name",
+	                    JOptionPane.PLAIN_MESSAGE,
+	                    null,
+	                    null,
+	                    "Sam");
+				if (!input.matches("\\d/\\d+/\\d\\d\\d\\d")){
+					JOptionPane.showMessageDialog(null,
+						    "Format incorrect.",
+						    "Error",
+						    JOptionPane.ERROR_MESSAGE);
+				} else break;
+			}
+			String[] parts = input.split("/");
+			textArea.setText(h.printPetsBoarding(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]), Integer.parseInt(parts[2])));
 		} else if (menu.getSelectedItem().toString().equals("Available spots")){
 			textArea.setText(h.printAvailable());
 		}
