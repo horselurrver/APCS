@@ -1,6 +1,6 @@
 /**
  * Custom exception for improper dates
- * @author amywang
+ * @author Spoorthi Jakka, Amy Wang
  *
  */
 public class IllegalDateException extends Exception {

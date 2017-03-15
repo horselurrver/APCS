@@ -1,14 +1,14 @@
+/**
+ * Driver class
+ * @author Spoorthi Jakka, Amy Wang
+ */
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
-/**
- * Driver class
- *
- */
 public class PetTester {
 	public PetTester(){
 		try {
-			AnimalHospital h = new AnimalHospital("petData.txt");//file not found?
+			AnimalHospital h = new AnimalHospital("petData.txt");
 			ArrayList<Pet> hospital = h.getHospital();
 			for(Pet p : hospital)
 			{
@@ -35,13 +35,13 @@ public class PetTester {
 			System.out.println("******************************************");
 			h.printAvailable();
 			System.out.println("******************************************");
-			h.printPetInfoByName("Akamaru");
+			System.out.println(h.printPetInfoByName("Akamaru"));
 			System.out.println("******************************************");
-			h.printPetInfoByOwner("Paulie Ann");
+			System.out.println(h.printPetInfoByOwner("Paulie Ann"));
 			System.out.println("******************************************");
-			h.printPetsBoarding(9, 15, 2001);
+			System.out.println(h.printPetsBoarding(9, 15, 2001));
 			System.out.println("********************************************");
-			h.printPetsBoarding(12, 15, 2003);
+			System.out.println(h.printPetsBoarding(12, 15, 2003));
 		} catch (IllegalEmailException i){
 			System.out.println(i.getMessage());
 		} catch (FileNotFoundException f){

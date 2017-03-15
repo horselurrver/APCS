@@ -1,6 +1,6 @@
 /**
  * Interface of methods for Pet to implement
- *
+ * @author Spoorthi Jakka, Amy Wang
  */
 public interface Boardable {
 	//month in range 1-12, day in range 1-31, year in range 2000-2016

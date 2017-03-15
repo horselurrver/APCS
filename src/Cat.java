@@ -1,6 +1,6 @@
 /**
  * Cat subclass of Pet
- * @author amywang
+ * @author Spoorthi Jakka, Amy Wang
  *
  */
 public class Cat extends Pet{

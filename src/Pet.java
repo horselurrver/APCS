@@ -6,7 +6,7 @@ import org.joda.time.Interval;
 
 /**
  * Blueprint for residential animals
- *
+ * @author Spoorthi Jakka, Amy Wang
  */
 public class Pet implements Boardable{
 	private String name;
