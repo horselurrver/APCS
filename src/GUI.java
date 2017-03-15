@@ -5,6 +5,7 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.FontFormatException;
@@ -44,17 +45,17 @@ public class GUI extends JFrame implements ActionListener{
 		}
 		setTitle("The Clinique");
 		setSize(800, 500);
+		setLayout(new BorderLayout());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JPanel p = new JPanel();
+		JPanel background = new JPanel();
+		background.setLayout(new FlowLayout());
 		
-		/*try {
-			JLabel background = new JLabel(new ImageIcon(ImageIO.read(new File("pawprints.jpg"))));
-			setContentPane(background);
-			setLayout(new FlowLayout());
-		} catch (IOException i){
-			System.out.println(i.getMessage());
-		}*/
-		
+		ImageIcon icon = new ImageIcon("paws2.jpg"); 
+		JLabel thumb = new JLabel();
+		thumb.setIcon(icon);
+		background.add(thumb);
+
 		p.setLayout(new GridLayout(0, 1));
 		JPanel coverImage = new JPanel(new BorderLayout());
 		JPanel titlePane = new JPanel();
@@ -153,12 +154,14 @@ public class GUI extends JFrame implements ActionListener{
 		p.add(coverImage);
 		p.add(searchBox);
 		p.add(textBox);
-		add(p);
+		p.add(background);
+		add(p, BorderLayout.CENTER);
 		
 		setVisible(true);			 
 					 
 	}
 	
+		  
 	/**
 	 * When search button is clicked, display different information on text 
 	 * area depending on what is selected on the dropdown menu
