@@ -300,6 +300,9 @@ public class GUI extends JFrame implements ActionListener{
 			 validate();
 			 repaint();
 		} else if (menu.getSelectedItem().toString().equals("Available spots")){
+			animalPics.removeAll();
+			animalPics.revalidate();
+			animalPics.repaint();
 			textArea.setText(h.printAvailable());
 		}
 	}
