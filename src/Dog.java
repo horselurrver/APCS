@@ -5,8 +5,8 @@
  */
 public class Dog extends Pet{
 	private String size;
-	public Dog(String name, String ownerName, String ownerEmail, String color, String size, String gender){
-		super(name, ownerName, ownerEmail, color, gender);
+	public Dog(String name, String ownerName, String ownerEmail, String color, String size, String gender, String imageFileName){
+		super(name, ownerName, ownerEmail, color, gender, imageFileName);
 		this.size = size;
 		if (size.equals("small"))
 			setBoardingRate(30.60);

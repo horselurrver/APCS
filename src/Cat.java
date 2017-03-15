@@ -5,8 +5,8 @@
  */
 public class Cat extends Pet{
 	private String hairLength;
-	public Cat(String name, String ownerName, String ownerEmail, String color, String hairLength, String gender){
-		super(name, ownerName, ownerEmail, color, gender);
+	public Cat(String name, String ownerName, String ownerEmail, String color, String hairLength, String gender, String imageFileName){
+		super(name, ownerName, ownerEmail, color, gender, imageFileName);
 		this.hairLength = hairLength;
 	}
 	

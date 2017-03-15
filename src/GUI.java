@@ -32,6 +32,7 @@ public class GUI extends JFrame implements ActionListener{
 	private JComboBox menu;
 	private JTextArea textArea;
 	private AnimalHospital h;
+	private JPanel animalPics;
 	public GUI(){
 		try {
 			h = new AnimalHospital("petData.txt");
@@ -45,7 +46,7 @@ public class GUI extends JFrame implements ActionListener{
 		}
 		setTitle("The Clinique");
 		setSize(800, 650);
-		setLayout(new BorderLayout());
+		//setLayout(new BorderLayout());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JPanel p = new JPanel();
 		JPanel background = new JPanel();
@@ -58,6 +59,10 @@ public class GUI extends JFrame implements ActionListener{
 
 		p.setLayout(new GridLayout(0, 1));
 		JPanel coverImage = new JPanel(new BorderLayout());
+		animalPics = new JPanel(new GridLayout(1, 0));
+		//animalPics = new JPanel();
+		animalPics.setBackground(new Color(134, 213, 224));
+		//animalPics.setBackground(Color.BLACK);
 		JPanel titlePane = new JPanel();
 		JPanel searchBox = new JPanel();
 		searchBox.setLayout(new BoxLayout(searchBox, BoxLayout.X_AXIS));
@@ -113,19 +118,7 @@ public class GUI extends JFrame implements ActionListener{
 		titlePane.add(b);//add bone to left
 		//creates space between the JLabels
 		titlePane.add(title);//add title to right
-	
-		/*
-		try {
-			cover = ImageIO.read(new File("cover.jpg"));
-		} catch (IOException i){
-			System.out.println(i.getMessage());
-		}
-		Image dimg = cover.getScaledInstance(800, 300, Image.SCALE_SMOOTH);
-		ImageIcon imageIcon = new ImageIcon(dimg);
-		JLabel image = new JLabel(imageIcon);
-		coverImage.add(image, BorderLayout.CENTER);
-		*/
-		
+			
 		//basic search box that calls the different methods
 		JButton search = new JButton("Search by...");
 		search.addActionListener(this);
@@ -152,6 +145,7 @@ public class GUI extends JFrame implements ActionListener{
 		
 		p.add(titlePane);
 		p.add(coverImage);
+		p.add(animalPics);
 		p.add(searchBox);
 		p.add(textBox);
 		p.add(background);
@@ -170,6 +164,10 @@ public class GUI extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent evt){
 	    Font f = new Font("Indie Flower", Font.PLAIN, 20);
 		if (menu.getSelectedItem().toString().equals("Pet name")){
+			//clear off animalPics, remove all components
+			animalPics.removeAll();
+			animalPics.revalidate();
+			animalPics.repaint();
 			JLabel j = new JLabel("Input a pet name");
 			j.setFont(f);
 			String input = (String)JOptionPane.showInputDialog(
@@ -181,7 +179,37 @@ public class GUI extends JFrame implements ActionListener{
                     null,
                     "Fluffy");
 			 textArea.setText(h.printPetInfoByName(input));
+			 ArrayList<Pet> pets = h.getPetByName(input);
+			 if (pets.size() > 0){
+				 for (Pet p : pets){
+					JPanel pet = new JPanel();
+					pet.setLayout(new GridLayout(0, 1));
+					//pet.setLayout(new BoxLayout(pet, BoxLayout.Y_AXIS));
+					//actual image of the pet
+					ImageIcon img = new ImageIcon(new ImageIcon(p.getImageFileName()).getImage().getScaledInstance(80, 80, Image.SCALE_DEFAULT));
+					JLabel picLabel = new JLabel();
+					picLabel.setIcon(img);
+					
+					//label for the pet
+					JLabel petLabel = new JLabel("Name: " + p.getPetName());
+					petLabel.setFont(new Font("Indie Flower", Font.BOLD, 13));
+					
+					//put label and image together
+					pet.add(picLabel);
+					pet.add(petLabel);
+					pet.setBackground(new Color(134, 213, 224));
+					
+					animalPics.add(pet);
+
+				 }
+			 }
+			 validate();
+			 repaint();
+			 //figure out how to repaint jpanel
 		} else if (menu.getSelectedItem().toString().equals("Owner name")){
+			animalPics.removeAll();
+			animalPics.revalidate();
+			animalPics.repaint();
 			JLabel j = new JLabel("Input an owner name");
 			j.setFont(f);
 			String input = (String)JOptionPane.showInputDialog(
@@ -193,7 +221,36 @@ public class GUI extends JFrame implements ActionListener{
                     null,
                     "Sam");
 			textArea.setText(h.printPetInfoByOwner(input));
+			ArrayList<Pet> pets = h.getPetByOwnerName(input);
+			 if (pets.size() > 0){
+				 for (Pet p : pets){
+					JPanel pet = new JPanel();
+					pet.setLayout(new GridLayout(0, 1));
+					//pet.setLayout(new BoxLayout(pet, BoxLayout.Y_AXIS));
+					//actual image of the pet
+					ImageIcon img = new ImageIcon(new ImageIcon(p.getImageFileName()).getImage().getScaledInstance(80, 80, Image.SCALE_DEFAULT));
+					JLabel picLabel = new JLabel();
+					picLabel.setIcon(img);
+					
+					//label for the pet
+					JLabel petLabel = new JLabel("Name: " + p.getPetName());
+					petLabel.setFont(new Font("Indie Flower", Font.BOLD, 13));
+					
+					//put label and image together
+					pet.add(picLabel);
+					pet.add(petLabel);
+					pet.setBackground(new Color(134, 213, 224));
+					
+					animalPics.add(pet);
+
+				 }
+			 }
+			 validate();
+			 repaint();
 		} else if (menu.getSelectedItem().toString().equals("Current residents")){
+			animalPics.removeAll();
+			animalPics.revalidate();
+			animalPics.repaint();
 			JLabel j = new JLabel("Input a date in the format of month/date/year");
 			j.setFont(f);
 			String input = "";
@@ -215,7 +272,37 @@ public class GUI extends JFrame implements ActionListener{
 			}
 			String[] parts = input.split("/");
 			textArea.setText(h.printPetsBoarding(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]), Integer.parseInt(parts[2])));
+			ArrayList<Pet> pets = h.getPetByBoarding(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]), Integer.parseInt(parts[2]));
+			 if (pets.size() > 0){
+				 for (Pet p : pets){
+					System.out.println(p.getImageFileName());
+					JPanel pet = new JPanel();
+					pet.setLayout(new GridLayout(0, 1));
+					//pet.setLayout(new BoxLayout(pet, BoxLayout.Y_AXIS));
+					//actual image of the pet
+					ImageIcon img = new ImageIcon(new ImageIcon(p.getImageFileName()).getImage().getScaledInstance(80, 80, Image.SCALE_DEFAULT));
+					JLabel picLabel = new JLabel();
+					picLabel.setIcon(img);
+					
+					//label for the pet
+					JLabel petLabel = new JLabel("Name: " + p.getPetName());
+					petLabel.setFont(new Font("Indie Flower", Font.BOLD, 13));
+					
+					//put label and image together
+					pet.add(picLabel);
+					pet.add(petLabel);
+					pet.setBackground(new Color(134, 213, 224));
+					
+					animalPics.add(pet);
+
+				 }
+			 }
+			 validate();
+			 repaint();
 		} else if (menu.getSelectedItem().toString().equals("Available spots")){
+			animalPics.removeAll();
+			animalPics.revalidate();
+			animalPics.repaint();
 			textArea.setText(h.printAvailable());
 		}
 	}
