@@ -128,7 +128,7 @@ public class GUI extends JFrame implements ActionListener{
 		
 		//basic search box that calls the different methods
 		JButton search = new JButton("Search by...");
-		search.addActionListener(this);
+		search.addActionListener("this");
 		Font searchFont = new Font("Architects Daughter", Font.PLAIN, 17);
 		search.setFont(searchFont);
 		searchBox.add(search);
@@ -168,15 +168,26 @@ public class GUI extends JFrame implements ActionListener{
 	 * @param evt
 	 */
 	public void actionPerformed(ActionEvent evt){
-		if (menu.getSelectedItem().toString().equals("Pet name")){
-			 textArea.setText(h.printPetInfoByName("Akamaru"));//add dialog box
-			// System.out.println(h.printPetInfoByName("Akamaru"));
-		} else if (menu.getSelectedItem().toString().equals("Owner name")){
-			textArea.setText(h.printPetInfoByOwner("Rebekah Smith"));
-		} else if (menu.getSelectedItem().toString().equals("Current residents")){
-			textArea.setText(h.printPetsBoarding(9, 15, 2001));
-		} else if (menu.getSelectedItem().toString().equals("Available spots")){
-			textArea.setText(h.printAvailable());
+		if(evt.getSource == search)
+		{
+			if(menu.getSelectedItem().toString().equals("Pet name"))
+			{
+				String name = (String)JOptionPane.showInputDialog(p, "Enter a name", JOptionPane.PLAIN_MESSAGE);
+				textArea.setText(h.printPetInfoByName(name));
+			}
+			else if(menu.getSelectedItem().toString().equals("Owner name"))
+			{
+				String ownerName = (String)JOptionPane.showInputDialog(p, "Enter a name", JOptionPane.PLAIN_MESSAGE);
+				textArea.setText(h.printPetInfoByOwner(name));
+			} 
+			else if (menu.getSelectedItem().toString().equals("Current residents"))
+			{
+				textArea.setText(h.printPetsBoarding(9, 15, 2001));
+			} 
+			else if (menu.getSelectedItem().toString().equals("Available spots"))
+			{
+				textArea.setText(h.printAvailable());
+			}
 		}
 	}
 	
