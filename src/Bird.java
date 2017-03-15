@@ -5,8 +5,8 @@
  */
 public class Bird extends Pet{
 	private boolean featherClipped;
-	public Bird(String name, String ownerName, String ownerEmail, String color, String gender){
-		super(name, ownerName, ownerEmail, color, gender);
+	public Bird(String name, String ownerName, String ownerEmail, String color, String gender, String imageFileName){
+		super(name, ownerName, ownerEmail, color, gender, imageFileName);
 	}
 	
 	/**

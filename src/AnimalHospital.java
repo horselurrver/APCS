@@ -26,24 +26,36 @@ public class AnimalHospital{
 		while (scan.hasNextLine()){//beginning to scan in information until the end
 			scan.useDelimiter("\n");
 			String animal = scan.next();
+			System.out.println("Animal type: " + animal);
 			String name = scan.next();
+			System.out.println("Animal name: " + name);
 			String ownerName = scan.next();
+			System.out.println("Owner name: " + ownerName);
 			String ownerEmail = scan.next();
+			System.out.println("Email: " + ownerEmail);
 
 			if (!(ownerEmail.matches(EMAIL_REGEX))){//validate user email
 				throw new IllegalEmailException();
 			}
 			String color = scan.next();
+			System.out.println("Color: " + color);
 			String gender = scan.next();
+			System.out.println("Gender: " + gender);
 			
 			scan.useDelimiter("\\W");
 			int startMonth = scan.nextInt();
+			System.out.println("Start month: " + startMonth);
 			int startDay = scan.nextInt();
+			System.out.println("Start day: " + startDay);
 			int startYear = scan.nextInt();
+			System.out.println("Start year: " + startYear);
 			
 			int endMonth = scan.nextInt();
+			System.out.println("End month: " + endMonth);
 			int endDay = scan.nextInt();
+			System.out.println("End day: " + endDay);
 			int endYear = scan.nextInt();
+			System.out.println("End year: " + endYear);
 
 			if (!(startMonth >=1 && startMonth <= 12) | !(endMonth >=1 && endMonth <= 12) | 
 					!(startYear >= 2000 && startYear <= 2016) | !(endYear >= 2000 && endYear <= 2016)
@@ -60,34 +72,44 @@ public class AnimalHospital{
 			if (animal.equals("DOG")){
 				scan.useDelimiter("\n");
 				String size = scan.next();
+				System.out.println("Size: " + size);
+				String imageFileName = scan.next();
+				System.out.println("Image file name: " + imageFileName);
 				if (dog_count == DOG_LIMIT)//check if limit has been reached
 					continue;
 				else{
 					dog_count++;
-					Dog d = new Dog(name, ownerName, ownerEmail, color, size, gender);
+					Dog d = new Dog(name, ownerName, ownerEmail, color, size, gender, imageFileName);
 					d.setBoardStart(startYear,startMonth, startDay);
 					d.setBoardEnd(endYear, endMonth, endDay);
 					d.calcBoardingPrice(days);
 					hospital.add(d);//adding the dog
 				}
 			} else if (animal.equals("CAT")){
+				scan.useDelimiter("\n");
 				String hairLength = scan.next();
+				System.out.println("Hair length: " + hairLength);
+				String imageFileName = scan.next();
+				System.out.println("Image file name: " + imageFileName);
 				if (cat_count == CAT_LIMIT)
 					continue;
 				else{
 					cat_count++;
-					Cat c = new Cat(name, ownerName, ownerEmail, color, hairLength, gender);
+					Cat c = new Cat(name, ownerName, ownerEmail, color, hairLength, gender, imageFileName);
 					c.setBoardStart(startYear,startMonth, startDay);
 					c.setBoardEnd(endYear, endMonth, endDay);
 					c.calcBoardingPrice(days);
 					hospital.add(c);
 				}
 			} else if (animal.equals("BIRD")){
+				scan.useDelimiter("\n");
+				String imageFileName = scan.next();
+				System.out.println("Image file name: " + imageFileName);
 				if (bird_count == BIRD_LIMIT)
 					continue;
 				else {
 					bird_count++;
-					Bird b = new Bird(name, ownerName, ownerEmail, color, gender);
+					Bird b = new Bird(name, ownerName, ownerEmail, color, gender, imageFileName);
 					b.setBoardStart(startYear,startMonth, startDay);
 					b.setBoardEnd(endYear, endMonth, endDay);
 					b.calcBoardingPrice(days);
@@ -125,6 +147,22 @@ public class AnimalHospital{
 	}
 	
 	/**
+	 * Searches the list of pets for every pet of given name
+	 * and returns the actual pet
+	 * @param name
+	 * @return ArrayList<Pet>
+	 */
+	public ArrayList<Pet> getPetByName(String name){
+		ArrayList<Pet> found = new ArrayList<>();
+		for (Pet p : hospital){
+			if (p.getPetName().equals(name)){
+				found.add(p);
+			}
+		}
+		return found;
+	}
+	
+	/**
 	 * Searches the list of pets for pets owned by given
 	 * person and returns the information using toString() 
 	 * method
@@ -148,8 +186,24 @@ public class AnimalHospital{
 		}
 		if (!(found))
 			temp = temp + "Pet with owner " + name + " not found." + "\n";
-		temp = temp + "******************************************";
+		temp = temp + "\n******************************************";
 		return temp;
+	}
+	
+	/**
+	 * Searches the list of pets for every pet with given owner
+	 * and returns the actual pet
+	 * @param name
+	 * @return ArrayList<Pet>
+	 */
+	public ArrayList<Pet> getPetByOwnerName(String name){
+		ArrayList<Pet> found = new ArrayList<>();
+		for (Pet p : hospital){
+			if (p.getOwnerName().equals(name)){
+				found.add(p);
+			}
+		}
+		return found;
 	}
 	
 	/**
@@ -177,6 +231,21 @@ public class AnimalHospital{
 			temp = temp + "No pets boarding on " + month + "/" + day + "/" + year2 + "\n";
 		temp = temp + "******************************************";
 		return temp;
+	}
+	
+	/**
+	 * Searches the list of pets for every pet currently boarding
+	 * @param name
+	 * @return ArrayList<Pet>
+	 */
+	public ArrayList<Pet> getPetByBoarding(int month, int day, int year){
+		ArrayList<Pet> found = new ArrayList<>();
+		for (Pet p : hospital){
+			if (p.boarding(year, month, day)){
+				found.add(p);
+			}
+		}
+		return found;
 	}
 
 	/**

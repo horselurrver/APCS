@@ -17,15 +17,17 @@ public class Pet implements Boardable{
 	private DateTime startDate;
 	private DateTime endDate;
 	private double boardingPrice;
+	private String imageFileName;
 	protected double boarding_rate = 38.60;//per night
 	DecimalFormat df = new DecimalFormat("#.00"); 
 	
-	public Pet(String name, String ownerName, String ownerEmail, String color, String gender){
+	public Pet(String name, String ownerName, String ownerEmail, String color, String gender, String imageFileName){
 		this.name = name;
 		this.ownerName = ownerName;
 		this.ownerEmail = ownerEmail;
 		this.color = color;
 		this.gender = gender;
+		this.imageFileName = imageFileName;
 	}
 	
 	/**
@@ -36,6 +38,19 @@ public class Pet implements Boardable{
 		return name;
 	}
 	
+	/**
+	 * Gets the image file name for the pet
+	 */
+	public String getImageFileName(){
+		return imageFileName;
+	}
+	
+	/**
+	 * Sets image file name for the pet
+	 */
+	public void setImageFileName(String image){
+		imageFileName = image;
+	}
 	/**
 	 * Returns owner name
 	 * @return
