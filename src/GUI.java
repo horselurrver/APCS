@@ -5,8 +5,10 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.FontFormatException;
+import java.awt.Graphics;
 import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -44,6 +46,15 @@ public class GUI extends JFrame implements ActionListener{
 		setSize(800, 500);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JPanel p = new JPanel();
+		
+		/*try {
+			JLabel background = new JLabel(new ImageIcon(ImageIO.read(new File("pawprints.jpg"))));
+			setContentPane(background);
+			setLayout(new FlowLayout());
+		} catch (IOException i){
+			System.out.println(i.getMessage());
+		}*/
+		
 		p.setLayout(new GridLayout(0, 1));
 		JPanel coverImage = new JPanel(new BorderLayout());
 		JPanel titlePane = new JPanel();
@@ -143,10 +154,11 @@ public class GUI extends JFrame implements ActionListener{
 		p.add(searchBox);
 		p.add(textBox);
 		add(p);
+		
 		setVisible(true);			 
 					 
 	}
-	 
+	
 	/**
 	 * When search button is clicked, display different information on text 
 	 * area depending on what is selected on the dropdown menu
