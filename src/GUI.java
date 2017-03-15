@@ -1,6 +1,7 @@
 /**
  * Main user interface for animal hospital
  * @author Spoorthi Jakka, Amy Wang
+ * @version Mar 15 2017
  */
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -33,6 +34,7 @@ public class GUI extends JFrame implements ActionListener{
 	private JTextArea textArea;
 	private AnimalHospital h;
 	public GUI(){
+		//create new AnimalHospital with data from file "petData".txt
 		try {
 			h = new AnimalHospital("petData.txt");
 			ArrayList<Pet> hospital = h.getHospital();
@@ -168,6 +170,7 @@ public class GUI extends JFrame implements ActionListener{
 	 * @param evt
 	 */
 	public void actionPerformed(ActionEvent evt){
+<<<<<<< HEAD
 	    Font f = new Font("Indie Flower", Font.PLAIN, 20);
 		if (menu.getSelectedItem().toString().equals("Pet name")){
 			JLabel j = new JLabel("Input a pet name");
@@ -217,6 +220,31 @@ public class GUI extends JFrame implements ActionListener{
 			textArea.setText(h.printPetsBoarding(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]), Integer.parseInt(parts[2])));
 		} else if (menu.getSelectedItem().toString().equals("Available spots")){
 			textArea.setText(h.printAvailable());
+=======
+		if(evt.getSource == search)
+		{
+			if(menu.getSelectedItem().toString().equals("Pet name"))
+			{
+				//print pet info by name based on name entered by user
+				String name = (String)JOptionPane.showInputDialog(p, "Enter a name", JOptionPane.PLAIN_MESSAGE);
+				textArea.setText(h.printPetInfoByName(name));
+			}
+			else if(menu.getSelectedItem().toString().equals("Owner name"))
+			{
+				//print pet info by owner based on name entered by user
+				String ownerName = (String)JOptionPane.showInputDialog(p, "Enter a name", JOptionPane.PLAIN_MESSAGE);
+				textArea.setText(h.printPetInfoByOwner(name));
+			} 
+			else if (menu.getSelectedItem().toString().equals("Current residents"))
+			{
+			
+				textArea.setText(h.printPetsBoarding(9, 15, 2001));
+			} 
+			else if (menu.getSelectedItem().toString().equals("Available spots"))
+			{
+				textArea.setText(h.printAvailable());
+			}
+>>>>>>> b494f48749c773786cd77b45520dd57796cc931e
 		}
 	}
 	
