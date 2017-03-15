@@ -1,6 +1,7 @@
 /**
  * Main user interface for animal hospital
  * @author Spoorthi Jakka, Amy Wang
+ * @version Mar 15 2017
  */
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -33,6 +34,7 @@ public class GUI extends JFrame implements ActionListener{
 	private JTextArea textArea;
 	private AnimalHospital h;
 	public GUI(){
+		//create new AnimalHospital with data from file "petData".txt
 		try {
 			h = new AnimalHospital("petData.txt");
 			ArrayList<Pet> hospital = h.getHospital();
@@ -128,7 +130,7 @@ public class GUI extends JFrame implements ActionListener{
 		
 		//basic search box that calls the different methods
 		JButton search = new JButton("Search by...");
-		search.addActionListener("this");
+		search.addActionListener(this);
 		Font searchFont = new Font("Architects Daughter", Font.PLAIN, 17);
 		search.setFont(searchFont);
 		searchBox.add(search);
@@ -172,16 +174,19 @@ public class GUI extends JFrame implements ActionListener{
 		{
 			if(menu.getSelectedItem().toString().equals("Pet name"))
 			{
+				//print pet info by name based on name entered by user
 				String name = (String)JOptionPane.showInputDialog(p, "Enter a name", JOptionPane.PLAIN_MESSAGE);
 				textArea.setText(h.printPetInfoByName(name));
 			}
 			else if(menu.getSelectedItem().toString().equals("Owner name"))
 			{
+				//print pet info by owner based on name entered by user
 				String ownerName = (String)JOptionPane.showInputDialog(p, "Enter a name", JOptionPane.PLAIN_MESSAGE);
 				textArea.setText(h.printPetInfoByOwner(name));
 			} 
 			else if (menu.getSelectedItem().toString().equals("Current residents"))
 			{
+			
 				textArea.setText(h.printPetsBoarding(9, 15, 2001));
 			} 
 			else if (menu.getSelectedItem().toString().equals("Available spots"))
