@@ -105,7 +105,7 @@ public class AnimalHospital{
 			} else if (animal.equals("BIRD")){
 				scan.useDelimiter("\n");
 				String imageFileName = scan.next();
-				System.out.println("Image file name: " + imageFileName);
+
 				if (bird_count == BIRD_LIMIT)
 					continue;
 				else {
