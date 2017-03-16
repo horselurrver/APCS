@@ -58,7 +58,7 @@ public class GUI extends JFrame implements ActionListener{
 		background.add(thumb);
 
 		p.setLayout(new GridLayout(0, 1));
-		JPanel coverImage = new JPanel(new BorderLayout());
+		//JPanel coverImage = new JPanel(new BorderLayout());
 		animalPics = new JPanel(new GridLayout(1, 0));
 		//animalPics = new JPanel();
 		animalPics.setBackground(new Color(134, 213, 224));
@@ -95,15 +95,15 @@ public class GUI extends JFrame implements ActionListener{
 		
 		//background color and margins
 		p.setBackground(new Color(134, 213, 224));//bluish theme for background
-		coverImage.setBackground(new Color(134, 213, 224));
-		p.setBorder(new EmptyBorder(30, 30, 30, 30));
+		//coverImage.setBackground(new Color(134, 213, 224));
+		p.setBorder(new EmptyBorder(20, 20, 20, 20));
 		
 		//making title text at top of cover page and read in bone picture that appears next to title
 		JLabel title = new JLabel("The Clinique", JLabel.LEFT);
 		title.setFont(new Font("Chewy", Font.BOLD, 40));
 		title.setForeground(new Color(242, 233, 208));//brownish theme for font color
 		
-		coverImage.add(title, BorderLayout.NORTH);
+		//coverImage.add(title, BorderLayout.NORTH);
 		try {
 			bone = ImageIO.read(new File("bone.png"));
 		} catch (IOException i){
@@ -114,6 +114,7 @@ public class GUI extends JFrame implements ActionListener{
 		JLabel b = new JLabel(imag);
 		
 		titlePane.setBackground(new Color(134, 213, 224));
+		//titlePane.setBackground(Color.BLACK);
 		titlePane.setLayout(new BoxLayout(titlePane, BoxLayout.X_AXIS));
 		titlePane.add(b);//add bone to left
 		//creates space between the JLabels
@@ -144,12 +145,13 @@ public class GUI extends JFrame implements ActionListener{
 		textBox.add(scrollPane);
 		
 		p.add(titlePane);
-		p.add(coverImage);
+		//p.add(coverImage);
 		p.add(animalPics);
 		p.add(searchBox);
 		p.add(textBox);
 		p.add(background);
 		add(p, BorderLayout.CENTER);
+		pack();
 		
 		setVisible(true);			 
 					 
@@ -186,13 +188,13 @@ public class GUI extends JFrame implements ActionListener{
 					pet.setLayout(new GridLayout(0, 1));
 					//pet.setLayout(new BoxLayout(pet, BoxLayout.Y_AXIS));
 					//actual image of the pet
-					ImageIcon img = new ImageIcon(new ImageIcon(p.getImageFileName()).getImage().getScaledInstance(80, 80, Image.SCALE_DEFAULT));
+					ImageIcon img = new ImageIcon(new ImageIcon(p.getImageFileName()).getImage().getScaledInstance(150, 140, Image.SCALE_DEFAULT));
 					JLabel picLabel = new JLabel();
 					picLabel.setIcon(img);
 					
 					//label for the pet
 					JLabel petLabel = new JLabel("Name: " + p.getPetName());
-					petLabel.setFont(new Font("Indie Flower", Font.BOLD, 13));
+					petLabel.setFont(new Font("Indie Flower", Font.BOLD, 17));
 					
 					//put label and image together
 					pet.add(picLabel);
@@ -228,13 +230,13 @@ public class GUI extends JFrame implements ActionListener{
 					pet.setLayout(new GridLayout(0, 1));
 					//pet.setLayout(new BoxLayout(pet, BoxLayout.Y_AXIS));
 					//actual image of the pet
-					ImageIcon img = new ImageIcon(new ImageIcon(p.getImageFileName()).getImage().getScaledInstance(80, 80, Image.SCALE_DEFAULT));
+					ImageIcon img = new ImageIcon(new ImageIcon(p.getImageFileName()).getImage().getScaledInstance(150, 140, Image.SCALE_DEFAULT));
 					JLabel picLabel = new JLabel();
 					picLabel.setIcon(img);
 					
 					//label for the pet
 					JLabel petLabel = new JLabel("Name: " + p.getPetName());
-					petLabel.setFont(new Font("Indie Flower", Font.BOLD, 13));
+					petLabel.setFont(new Font("Indie Flower", Font.BOLD, 17));
 					
 					//put label and image together
 					pet.add(picLabel);
@@ -263,7 +265,7 @@ public class GUI extends JFrame implements ActionListener{
 	                    null,
 	                    null,
 	                    "Sam");
-				if (!input.matches("\\d/\\d+/\\d\\d\\d\\d")){
+				if (!input.matches("\\d+/\\d+/\\d\\d\\d\\d")){
 					JOptionPane.showMessageDialog(null,
 						    "Format incorrect.",
 						    "Error",
@@ -280,13 +282,13 @@ public class GUI extends JFrame implements ActionListener{
 					pet.setLayout(new GridLayout(0, 1));
 					//pet.setLayout(new BoxLayout(pet, BoxLayout.Y_AXIS));
 					//actual image of the pet
-					ImageIcon img = new ImageIcon(new ImageIcon(p.getImageFileName()).getImage().getScaledInstance(80, 80, Image.SCALE_DEFAULT));
+					ImageIcon img = new ImageIcon(new ImageIcon(p.getImageFileName()).getImage().getScaledInstance(150, 140, Image.SCALE_DEFAULT));
 					JLabel picLabel = new JLabel();
 					picLabel.setIcon(img);
 					
 					//label for the pet
 					JLabel petLabel = new JLabel("Name: " + p.getPetName());
-					petLabel.setFont(new Font("Indie Flower", Font.BOLD, 13));
+					petLabel.setFont(new Font("Indie Flower", Font.BOLD, 17));
 					
 					//put label and image together
 					pet.add(picLabel);

@@ -7,6 +7,7 @@ spayed
 9 15 2001
 10 15 2001
 large
+dog1.jpg
 CAT
 Peanut
 John Wang
@@ -16,6 +17,7 @@ spayed
 11 20 2003
 1 15 2004
 3
+cat2.jpg
 BIRD
 Paulie Ann
 Eric McDonald
@@ -24,6 +26,7 @@ yellow
 female
 3 25 2005
 3 30 2005
+bird1.jpg
 DOG
 Akamaru
 Kiba Inuzuka
@@ -33,6 +36,7 @@ male
 5 30 2010
 8 25 2010
 very large
+dog2.jpg
 CAT
 Nyanko
 Natsume Takashi
@@ -42,3 +46,4 @@ neutered
 7 8 2012
 8 7 2012
 4
+cat1.jpg
