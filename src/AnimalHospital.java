@@ -1,6 +1,7 @@
 /**
  * Read in boarding pets from a file and execute different methods
  * @author Spoorthi Jakka, Amy Wang
+ *sources are in readME file
  */
 import java.io.File;
 import java.io.FileNotFoundException;
