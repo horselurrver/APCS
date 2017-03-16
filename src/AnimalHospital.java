@@ -26,36 +26,36 @@ public class AnimalHospital{
 		while (scan.hasNextLine()){//beginning to scan in information until the end
 			scan.useDelimiter("\n");
 			String animal = scan.next();
-			System.out.println("Animal type: " + animal);
+			
 			String name = scan.next();
-			System.out.println("Animal name: " + name);
+			
 			String ownerName = scan.next();
-			System.out.println("Owner name: " + ownerName);
+			
 			String ownerEmail = scan.next();
-			System.out.println("Email: " + ownerEmail);
+			
 
 			if (!(ownerEmail.matches(EMAIL_REGEX))){//validate user email
 				throw new IllegalEmailException();
 			}
 			String color = scan.next();
-			System.out.println("Color: " + color);
+			
 			String gender = scan.next();
-			System.out.println("Gender: " + gender);
+			
 			
 			scan.useDelimiter("\\W");
 			int startMonth = scan.nextInt();
-			System.out.println("Start month: " + startMonth);
+			
 			int startDay = scan.nextInt();
-			System.out.println("Start day: " + startDay);
+			
 			int startYear = scan.nextInt();
-			System.out.println("Start year: " + startYear);
+			
 			
 			int endMonth = scan.nextInt();
-			System.out.println("End month: " + endMonth);
+			
 			int endDay = scan.nextInt();
-			System.out.println("End day: " + endDay);
+			
 			int endYear = scan.nextInt();
-			System.out.println("End year: " + endYear);
+			
 
 			if (!(startMonth >=1 && startMonth <= 12) | !(endMonth >=1 && endMonth <= 12) | 
 					!(startYear >= 2000 && startYear <= 2016) | !(endYear >= 2000 && endYear <= 2016)
@@ -72,9 +72,9 @@ public class AnimalHospital{
 			if (animal.equals("DOG")){
 				scan.useDelimiter("\n");
 				String size = scan.next();
-				System.out.println("Size: " + size);
+				
 				String imageFileName = scan.next();
-				System.out.println("Image file name: " + imageFileName);
+				
 				if (dog_count == DOG_LIMIT)//check if limit has been reached
 					continue;
 				else{
@@ -88,9 +88,9 @@ public class AnimalHospital{
 			} else if (animal.equals("CAT")){
 				scan.useDelimiter("\n");
 				String hairLength = scan.next();
-				System.out.println("Hair length: " + hairLength);
+				
 				String imageFileName = scan.next();
-				System.out.println("Image file name: " + imageFileName);
+				
 				if (cat_count == CAT_LIMIT)
 					continue;
 				else{
